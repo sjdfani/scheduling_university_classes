@@ -1,0 +1,12 @@
+.custom-header {
+  background-color: #333;
+  color: #fff;
+}
+
+.custom-header th {
+  font-weight: bold;
+}
+
+.custom-body th {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
