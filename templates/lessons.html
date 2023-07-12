@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../static/photo/icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../static/styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="../static/styles/global.css" />
+    <link rel="stylesheet" href="../static/styles/table.css" />
+    <title>اطلاعات درس ها</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row mt-1 mb-1">
+        <div class="col d-flex">
+          <a href="./index.html" class="d-flex btn btn-light">
+            <img
+              src="../static/photo/icons8-forward-50.png"
+              width="30"
+              height="30"
+              alt=""
+            />
+          </a>
+          <h2 class="form-label float-start mx-2">اطلاعات درس ها</h2>
+        </div>
+        <div class="col d-flex justify-content-end">
+          <input
+            type="button"
+            class="btn btn-danger w-25 mx-2"
+            value="- ویرایش و حذف"
+            id="edit-delete-lesson"
+          />
+          <input
+            type="button"
+            class="btn btn-success float-end w-25"
+            value="+ اضافه کردن"
+            id="add-lesson-btn"
+          />
+        </div>
+      </div>
+
+      <table
+        class="table table-striped table-bordered table-hover text-center table-responsive"
+      >
+        <thead class="custom-header">
+          <tr>
+            <th>کلاس</th>
+            <th>درس</th>
+            <th>استاد</th>
+            <th>زمان</th>
+            <th>نوع درس</th>
+            <th>تعداد دانشجو</th>
+            <th>روز برگزاری</th>
+            <th>هفته</th>
+          </tr>
+        </thead>
+        <tbody class="custom-body" id="lesson-body"></tbody>
+      </table>
+
+      <div class="border p-2 mb-2 d-none" id="add-lesson-div">
+        <div class="row mb-3">
+          <h3 class="text-center d-flex">اضافه کردن درس</h3>
+        </div>
+        <form action="http://localhost:8080/lesson" method="post">
+          <div class="row">
+            <div class="col">
+              <label for="lesson_name" class="form-label">اسم درس :</label>
+              <input
+                type="text"
+                class="form-control"
+                id="lesson_name"
+                name="lesson_name"
+                placeholder="اسم درس "
+                required
+              />
+            </div>
+            <div class="col">
+              <label for="master_name" class="form-label">اسم استاد :</label>
+              <input
+                type="text"
+                class="form-control"
+                id="master_name"
+                name="master_name"
+                placeholder="اسم استاد"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col">
+              <label for="time" class="form-label">زمان :</label>
+              <select id="time" class="form-control" name="time" required>
+                <option value="8-10">08-10</option>
+                <option value="10-12">10-12</option>
+                <option value="12-14">12-14</option>
+                <option value="14-16">14-16</option>
+                <option value="16-18">16-18</option>
+                <option value="18-20">18-20</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="lesson_type" class="form-label">نوع درس :</label>
+              <select
+                id="lesson_type"
+                class="form-control"
+                name="lesson_type"
+                required
+              >
+                <option value="main">اصلی</option>
+                <option value="ta">حل تمرین</option>
+                <option value="reparative">جبرانی</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col">
+              <label for="day_1" class="form-label">روز :</label>
+              <select id="day_1" class="form-control" name="day" required>
+                <option value="none">هیچکدام</option>
+                <option value="saturday">شنبه</option>
+                <option value="sunday">یکشنبه</option>
+                <option value="monday">دوشنبه</option>
+                <option value="tuesday">سه شنبه</option>
+                <option value="wednesday">چهارشنبه</option>
+                <option value="thursday">پنجشنبه</option>
+                <option value="friday">جمعه</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="state-day" class="form-label">هفته :</label>
+              <select
+                id="state-day"
+                class="form-control"
+                name="state_day"
+                required
+              >
+                <option value="both">ثابت</option>
+                <option value="odd">فرد</option>
+                <option value="even">زوج</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col">
+              <label class="form-label">تعداد دانشجو :</label>
+              <input
+                type="number"
+                class="form-control"
+                id="student_number"
+                name="student_number"
+                value="0"
+                required
+              />
+            </div>
+            <div class="col">
+              <label for="lesson-room-type" class="form-label"
+                >نوع اتاق درخواستی :</label
+              >
+              <select
+                id="lesson-room-type"
+                class="form-control"
+                name="lesson_room_type"
+                required
+              >
+                <option value="class">کلاس</option>
+                <option value="workshop">کارگاه</option>
+                <option value="laboratory">آزمایشگاه</option>
+              </select>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <label class="form-label"></label>
+            <br />
+            <button type="submit" class="btn btn-success w-25 mx-1 mt-2">
+              اضافه کردن
+            </button>
+            <button type="reset" class="btn btn-danger w-25 mx-1 mt-2">
+              بازیابی مجدد
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="border p-2 mb-2 d-none" id="edit-delete-lesson-div">
+        <div class="row mb-3">
+          <h3 class="text-center d-flex">ویرایش و حذف درس</h3>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label class="form-label">اسم کلاس : </label>
+            <select
+              id="class-name-ed-lesson-search"
+              class="form-control"
+              name="class_name"
+              required
+            ></select>
+          </div>
+          <div class="col">
+            <label for="time-search" class="form-label">زمان :</label>
+            <select id="time-search" class="form-control" name="time">
+              <option value="8-10">08-10</option>
+              <option value="10-12">10-12</option>
+              <option value="12-14">12-14</option>
+              <option value="14-16">14-16</option>
+              <option value="16-18">16-18</option>
+              <option value="18-20">18-20</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col">
+            <label for="state-day-search" class="form-label">هفته :</label>
+            <select id="state-day-search" class="form-control" name="state_day">
+              <option value="both">ثابت</option>
+              <option value="odd">فرد</option>
+              <option value="even">زوج</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="day_1_search" class="form-label">روز :</label>
+            <select id="day_1_search" class="form-control" name="day" required>
+              <option value="saturday">شنبه</option>
+              <option value="sunday">یکشنبه</option>
+              <option value="monday">دوشنبه</option>
+              <option value="tuesday">سه شنبه</option>
+              <option value="wednesday">چهارشنبه</option>
+              <option value="thursday">پنجشنبه</option>
+              <option value="friday">جمعه</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-2">
+            <label></label>
+            <br />
+            <button class="btn btn-dark w-75 mt-2" id="search-lesson-btn">
+              جستجو
+            </button>
+          </div>
+          <div class="col-4 mt-1 d-none" id="lesson-message-div">
+            <label class="form-label"></label>
+            <h5 class="text-danger mt-2">
+              این درس وجود ندارد. لطفا دوباره سعی کنید.
+            </h5>
+          </div>
+        </div>
+
+        <div class="border p-3 mt-3 d-none" id="edit-delete-lesson-div-form">
+          <form>
+            <div class="row">
+              <div class="col">
+                <label for="lesson_name_ed" class="form-label">اسم درس :</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="lesson_name_ed"
+                  name="lesson_name"
+                  placeholder="اسم درس"
+                  required
+                />
+              </div>
+              <div class="col">
+                <label for="master_name_ed" class="form-label"
+                  >اسم استاد:</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="master_name_ed"
+                  name="master_name"
+                  placeholder="اسم استاد"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col">
+                <label for="time_ed" class="form-label">زمان:</label>
+                <select id="time_ed" class="form-control" name="time" disabled>
+                  <option value="8-10">08-10</option>
+                  <option value="10-12">10-12</option>
+                  <option value="12-14">12-14</option>
+                  <option value="14-16">14-16</option>
+                  <option value="16-18">16-18</option>
+                  <option value="18-20">18-20</option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="lesson_type_ed" class="form-label">نوع درس :</label>
+                <select
+                  id="lesson_type_ed"
+                  class="form-control"
+                  name="lesson_type"
+                  required
+                >
+                  <option value="main">اصلی</option>
+                  <option value="ta">حل تمرین</option>
+                  <option value="reparative">جبرانی</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col">
+                <label for="day_1_ed" class="form-label"> روز :</label>
+                <select id="day_1_ed" class="form-control" name="day" disabled>
+                  <option value="none">هیچکدام</option>
+                  <option value="saturday">شنبه</option>
+                  <option value="sunday">یکشنبه</option>
+                  <option value="monday">دوشنبه</option>
+                  <option value="tuesday">سه شنبه</option>
+                  <option value="wednesday">چهارشنبه</option>
+                  <option value="thursday">پنجشنبه</option>
+                  <option value="friday">جمعه</option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="state-day_ed" class="form-label">هفته :</label>
+                <select
+                  id="state-day_ed"
+                  class="form-control"
+                  name="state_day"
+                  disabled
+                >
+                  <option value="both">ثابت</option>
+                  <option value="odd">فرد</option>
+                  <option value="even">زوج</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+              <div class="col">
+                <label class="form-label">اسم کلاس : </label>
+                <select
+                  id="class-name-lesson_ed"
+                  class="form-control"
+                  name="class_name"
+                  disabled
+                ></select>
+              </div>
+              <div class="col">
+                <label for="" class="form-label">تعداد دانشجو :</label>
+                <input
+                  type="number"
+                  id="student_number_ed"
+                  class="form-control"
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="row d-flex justify-content-center mt-3">
+              <button
+                type="submit"
+                class="btn btn-success w-25 mx-1 mt-2"
+                id="update-lesson-btn"
+              >
+                بروزرسانی
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger w-25 mx-1 mt-2"
+                id="delete-lesson-btn"
+              >
+                حذف
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="../static/scripts/bootstrap.bundle.min.js"></script>
+    <script src="../static/scripts/ajax.googleapis.com_ajax_libs_jquery_3.6.4_jquery.min.js"></script>
+    <script src="../static/scripts/lesson_table.js"></script>
+    <script src="../static/scripts/lesson_main.js"></script>
+  </body>
+</html>

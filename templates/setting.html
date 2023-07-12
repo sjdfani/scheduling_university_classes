@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../static/photo/icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../static/styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="../static/styles/global.css" />
+    <title>تنظیمات</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row mt-2">
+        <h3>تنظیمات سایت</h3>
+      </div>
+      <div class="border shadow p-2">
+        <form action="http://localhost:8080/setting" method="post">
+          <div class="row">
+            <div class="col">
+              <label class="form-label" for="now">شماره هفته :</label>
+              <select name="number_of_week" id="now" class="form-control">
+                <option value="01st">هفته 1</option>
+                <option value="02nd">هفته 2</option>
+                <option value="03rd">هفته 3</option>
+                <option value="04th">هفته 4</option>
+                <option value="05th">هفته 5</option>
+                <option value="06th">هفته 6</option>
+                <option value="07th">هفته 7</option>
+                <option value="08th">هفته 8</option>
+                <option value="09th">هفته 9</option>
+                <option value="10th">هفته 10</option>
+                <option value="11th">هفته 11</option>
+                <option value="12th">هفته 12</option>
+                <option value="13th">هفته 13</option>
+                <option value="14th">هفته 14</option>
+                <option value="15th">هفته 15</option>
+                <option value="16th">هفته 16</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="nav-day" class="form-label">روز جاری : </label>
+              <select name="nav_day" id="nav-day" class="form-control">
+                <option value="saturday">شنبه</option>
+                <option value="sunday">یکشنبه</option>
+                <option value="monday">دوشنبه</option>
+                <option value="tuesday">سه شنبه</option>
+                <option value="wednesday">چهارشنبه</option>
+                <option value="thursday">پنجشنبه</option>
+                <option value="friday">جمعه</option>
+              </select>
+            </div>
+            <div class="d-flex justify-content-end mt-3">
+              <input
+                class="btn btn-success w-25"
+                type="submit"
+                id="setting-submit"
+                value="بروزرسانی"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="../static/scripts/bootstrap.bundle.min.js"></script>
+    <script src="../static/scripts/ajax.googleapis.com_ajax_libs_jquery_3.6.4_jquery.min.js"></script>
+    <script src="../static/scripts/setting_main.js"></script>
+    <script src="../static/scripts/index.js"></script>
+  </body>
+</html>

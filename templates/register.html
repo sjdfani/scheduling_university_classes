@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../static/photo/icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../static/styles/bootstrap.min.css" />
+    <title>ثبت نام</title>
+  </head>
+  <body>
+    <div class="container border shadow mt-5 w-50">
+      <div class="row bg-secondary">
+        <div class="row d-flex">
+          <div class="col-1 d-flex">
+            <a href="./index.html" class="d-flex">
+              <img
+                src="../static/photo/icons8-forward-50.png"
+                width="45"
+                height="45"
+                alt=""
+              />
+            </a>
+          </div>
+          <div class="col-11">
+            <h1
+              class="form-label text-bg-secondary d-flex justify-content-center"
+            >
+              ثبت نام عضو جدید
+            </h1>
+          </div>
+        </div>
+      </div>
+      <form action="http://localhost:8080/register" method="post">
+        <div class="mb-2 mt-2">
+          <label class="form-label" for="username">نام کاربری :</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            class="form-control"
+            placeholder="نام کاربری"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">رمز عبور :</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            placeholder="رمز عبور"
+            required
+          />
+        </div>
+
+        <div class="mb-2 d-flex justify-content-center">
+          <button type="submit" id="register" class="btn btn-success w-25 m-1">
+            ثبت نام
+          </button>
+          <input
+            type="reset"
+            class="btn btn-danger w-25 m-1"
+            value="بازیابی مجدد"
+          />
+        </div>
+      </form>
+    </div>
+
+    <script src="../static/scripts/bootstrap.bundle.min.js"></script>
+    <script src="../static/scripts/ajax.googleapis.com_ajax_libs_jquery_3.6.4_jquery.min.js"></script>
+    <script src="../static/scripts/index.js"></script>
+  </body>
+</html>
