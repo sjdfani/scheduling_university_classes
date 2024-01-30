@@ -13,7 +13,7 @@ Finally, it will be determined which lesson will be held in which class at which
 
 ## Technologies used
 
-Html - css - bootstrap 5 - javascript -jquery - node.js - express.js
+HTML - CSS - Bootstrap 5 - Javascript - Jquery - Node.js - Express.js
 
 ## Contact
 
